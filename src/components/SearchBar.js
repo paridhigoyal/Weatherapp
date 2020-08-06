@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchWeather } from '../actions'
+import { fetchWeather, fetchHistory } from '../actions'
 import FetchWeatherDetail from '../containers/FetchWeatherDetail'
+import SearchHistory from '../containers/SearchHistory'
 
 class SearchBar extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class SearchBar extends Component {
     event.preventDefault()
 
     this.props.fetchWeather(this.state.city)
+    this.props.fetchHistory(this.state.city)
     this.setState({ city: '' })
   }
 
@@ -29,7 +31,8 @@ class SearchBar extends Component {
           value={this.state.city}
           onChange={this.onInputChange} />
         <button type="submit" >Submit</button>
-        <FetchWeatherDetail></FetchWeatherDetail>
+        <FetchWeatherDetail />
+        <SearchHistory />
 
       </form>
     )
@@ -37,4 +40,4 @@ class SearchBar extends Component {
 }
 
 
-export default connect(null, { fetchWeather })(SearchBar)
+export default connect(null, { fetchWeather, fetchHistory })(SearchBar)

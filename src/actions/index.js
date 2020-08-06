@@ -2,6 +2,7 @@ import {
     FETCH_WEATHER_REQUEST,
     FETCH_WEATHER_SUCCESS,
     FETCH_WEATHER_FAILURE,
+    FETCH_HISTORY,
     API_KEY
 } from './action_Type'
 
@@ -13,7 +14,7 @@ export const fetchWeather = (city) => {
             .then(response => response.json()).then(data => {
 
                 const city = data
-                console.log(city.main.temp);
+                // console.log(city.main.temp);
                 dispatch(fetchWeatherSuccess(city))
             })
             .catch(error => {
@@ -43,9 +44,9 @@ export const fetchWeatherFailure = error => {
     }
 }
 
-// export const fetchhistory= city =>{
-//     return{
-//         type:FETCH_HISTORY,
-//         city
-//     }
-// }
+export const fetchHistory = city => {
+    return {
+        type: FETCH_HISTORY,
+        payload: city
+    }
+}

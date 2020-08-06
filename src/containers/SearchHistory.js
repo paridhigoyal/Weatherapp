@@ -1,14 +1,23 @@
 
-// const mapStateToProps = state => ({
+import { connect } from 'react-redux';
+import { fetchWeather, fetchHistory } from '../actions/index';
+import History from '../components/History';
 
-//     history: getVisibleHistory(state.city, state.visibilityFilter)
-// });
+const mapStateToProps = state => {
 
-// const mapDispatchToProps = dispatch => ({
-//     toggleHistory: city => dispatch(toggleHistory(city))
-// });
+  return {
 
-// export default connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-// )(CityList);
+    cityList: state.cityList
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchHistory: (city) => dispatch(fetchHistory(city))
+
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(History)

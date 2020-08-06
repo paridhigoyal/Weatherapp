@@ -11,6 +11,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchWeather: (city) => dispatch(fetchWeather(city))
+
   }
 }
 export default connect(
